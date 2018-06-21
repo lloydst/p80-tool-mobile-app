@@ -1,0 +1,9 @@
+<StackLayout >
+    <!--<label text="ip:"></label>-->
+    <TextField hint="Ip address" [(ngModel)]="autoscreen.ip" autocorrect="false" autocapitalizationType="none"></TextField>
+    <!--<label text="channel:"></label>-->
+    <TextField hint="Channel" [(ngModel)]="autoscreen.channel" autocorrect="false" autocapitalizationType="none"></TextField>
+    <!--<label text="name:"></label>-->
+    <TextField hint="Name" [(ngModel)]="autoscreen.name" autocorrect="false" autocapitalizationType="none"></TextField>
+    <button (tap)="submit()" text="Create!"></button>
+</StackLayout>

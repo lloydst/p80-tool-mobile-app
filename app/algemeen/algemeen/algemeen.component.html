@@ -1,0 +1,31 @@
+<ActionBar class="action-bar">
+    <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="algemeen"></Label>
+</ActionBar>
+<ScrollView orientation="vertical">
+    <StackLayout sdkExampleTitle sdkToggleNavButton>
+        <button text="refresh" (tap)="getIP()"></button>
+        <label text="Either create a new auto selectchannel(based on ip) or select a channel to edit/delete it!" textWrap="true"
+            class="p-15"></label>
+        <ListLayout row="0" columns="*, auto" [items]="ipList">
+            <Button text="create" [nsRouterLink]="['add']" class="btn btn-green btn-active" col="0"></Button>
+            <ListLayout *ngFor="let a of ipList; let i = index">
+                <Button text="{{a.name}} {{a.ip}} {{a.channel}}" [nsRouterLink]="['detail/'+a.ip]" icon="res://navigation/remove" class="btn btn-primary"></Button>
+
+            </ListLayout>
+        </ListLayout>
+
+        <router-outlet></router-outlet>
+    </StackLayout>
+</ScrollView>

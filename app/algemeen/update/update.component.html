@@ -1,0 +1,11 @@
+<StackLayout>
+    
+    <label text="name:"></label>
+    <TextField hint="Name" [(ngModel)]="dataIp.name" autocorrect="false" autocapitalizationType="none"></TextField>
+    <label text="Channel:"></label>
+    <TextField hint="Channel" [(ngModel)]="dataIp.channel" autocorrect="false" autocapitalizationType="none"></TextField>
+    <label text="ip:"></label>
+    <TextField hint="Ip" [(ngModel)]="dataIp.ip" autocorrect="false" autocapitalizationType="none"></TextField>
+    <button text="edit" (tap)="updateData()"></button>
+    <button text="delete" (tap)="deleteData()"></button>
+</StackLayout>
