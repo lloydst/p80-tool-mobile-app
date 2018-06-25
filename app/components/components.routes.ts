@@ -9,6 +9,8 @@ import { AdminEventComponent } from "~/components/admin-event/admin-event.compon
 import { AdminEntranceDetailComponent } from "~/components/admin-entrance-detail/admin-entrance-detail.component";
 import { AdminEntranceComponent } from "~/components/admin-entrance/admin-entrance.component";
 import { ComponentsComponent } from "~/components/components/components.component";
+import { AdminEventAddComponent } from "~/components/admin-event/add/add.component";
+import { AddWebsiteComponent } from "~/components/admin-entrance/add-website/add-website.component";
 
 const routes: Routes = [
     {
@@ -16,7 +18,9 @@ const routes: Routes = [
         component: ComponentsComponent,
         children: [
           {path: 'entrance', component: AdminEntranceComponent},
+          {path: 'entrance-add', component: AddWebsiteComponent}, // tries to match this before the next
           {path: 'entrance/:id', component: AdminEntranceDetailComponent},
+          {path: 'event-add', component:AdminEventAddComponent },
           {path: 'events', component: AdminEventComponent},
           {path: 'events/:id', component: AdminEventDetailComponent},
           {path: 'meeting', component: AdminMeetingComponent}

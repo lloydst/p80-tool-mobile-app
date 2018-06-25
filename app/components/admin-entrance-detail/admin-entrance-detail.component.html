@@ -1,8 +1,11 @@
 <StackLayout>
- 
+ <label text="name"></label>
     <TextField hint="Ip" [(ngModel)]="website[0].name" autocorrect="false" autocapitalizationType="none"></TextField>
+    <label text="website"></label>
     <TextField hint="Ip" [(ngModel)]="website[0].url" autocorrect="false" autocapitalizationType="none"></TextField>
+    <label text="does nothing"></label>
     <TextField hint="Ip" [(ngModel)]="website[0].visable" autocorrect="false" autocapitalizationType="none"></TextField>
     
-    <button text="edit" (tap)="updateData()"></button>
+    <button text="edit" (tap)="updateData({name:website[0].name, url: website[0].url, visable: website[0].visable})"></button>
+    <label text="{{ website[0].name}} ,  {{website[0].url}}, {{website[0].visable}}"></label>
 </StackLayout>

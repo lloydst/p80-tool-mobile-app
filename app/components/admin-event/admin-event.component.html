@@ -1,5 +1,23 @@
-<Page>
-  <Label 
-    text="admin-event Is working" class="h1"></Label>
-    <button text="test" (tap)="navigate('/components/events/derp')"></button>
-</Page>
+<Scrollview>
+    <StackLayout [items]="messages">
+        <!--<Label text="admin-event Is working" class="h1 title"></Label>-->
+        <StackLayout *ngIf="messages?.length === 0">
+            <Label text="no messages click here to add one:"></Label>
+            <button (tap)="navigate('/components/event-add')" text="add!"></button>
+        </StackLayout>
+        <StackLayout *ngIf="messages?.length > 0">
+            <button (tap)="navigate('/components/event-add')" text="add!"></button>
+
+            <label text="Current and upcomming messages"></label>
+            <GridLayout rows="auto, auto" textWrap="true" columns="auto,auto,auto" width="100%" *ngFor="let m of messages">
+                <label col="0" row="0" [text]="m.identifier"></label>
+                <label col="1" row="0" [text]="m.message"></label>
+                <button col="2" row="0" text="update" (tap)="navigate('/components/events/'+ m.identifier)"></button>
+                <label col="0" row="1" [text]="'From' + m.showFrom"></label>
+                <label col="1" row="1" [text]="'Till' + m.showTill"></label>
+                <button col="2" row="1"text="delete" (tap)="deleteMessage(m.identifier)"></button>
+            </GridLayout>
+
+        </StackLayout>
+    </StackLayout>
+</Scrollview>

@@ -32,8 +32,8 @@ export class AdminEntranceDetailComponent implements OnInit {
             console.log(this.website)
         })
     }
-    updateData() {
-        this.data.updateWebsite(this.current, {name: this.website.name, url: this.website.url, visable: this.website.visable}).subscribe(()=>{
+    updateData(object) {
+        this.data.updateWebsite(this.current, object).subscribe(()=>{
                 this.onNav('/components/entrance')
             })
       }

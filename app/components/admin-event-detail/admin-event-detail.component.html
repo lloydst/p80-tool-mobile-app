@@ -1,4 +1,17 @@
-<StackLayout>
-  <Label class="h1 title"
-    text="admin-event-detail Is working"></Label>
+<ScrollView>
+<StackLayout [items]=messages>
+        <label text="message"></label>
+        <TextField hint="message" [(ngModel)]="messages[0].message" autocorrect="false" autocapitalizationType="none"></TextField>
+        <label text="identifier"></label>
+        <TextField hint="identifier" [(ngModel)]="messages[0].identifier" autocorrect="false" autocapitalizationType="none"></TextField>
+        <label text="Image url"></label>
+        <TextField hint="image link" [(ngModel)]="messages[0].imgLink" autocorrect="false" autocapitalizationType="none"></TextField>
+        <label text="showFrom"></label>
+        <TextField hint="shown from" [(ngModel)]="messages[0].showFrom" autocorrect="false" autocapitalizationType="none"></TextField>
+        <label text="showTill"></label>
+        <TextField hint="shown untill" [(ngModel)]="messages[0].showTill" autocorrect="false" autocapitalizationType="none"></TextField>
+        <button text="edit" (tap)="updateData({message:messages[0].message,
+         identifier: messages[0].identifier, imgLink: messages[0].imgLink,showFrom: messages[0].showFrom, showTill:messages[0].showTill})"></button>
+        <label text="{{messages[0].message}},{{messages[0].identifier}}, {{messages[0].imgLink}} {{messages[0].showFrom}} {{messages[0].showTill}}"></label>
 </StackLayout>
+</ScrollView>

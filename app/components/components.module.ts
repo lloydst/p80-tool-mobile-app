@@ -12,6 +12,8 @@ import { AdminEntranceDetailComponent } from '~/components/admin-entrance-detail
 import { AdminEventComponent } from '~/components/admin-event/admin-event.component';
 import { AdminEventDetailComponent } from '~/components/admin-event-detail/admin-event-detail.component';
 import { AdminMeetingComponent } from '~/components/admin-meeting/admin-meeting.component';
+import { AdminEventAddComponent } from '~/components/admin-event/add/add.component';
+import { AddWebsiteComponent } from '~/components/admin-entrance/add-website/add-website.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { AdminMeetingComponent } from '~/components/admin-meeting/admin-meeting.
   AdminEntranceDetailComponent,
   AdminEventComponent,
   AdminEventDetailComponent,
-  AdminMeetingComponent
+  AdminMeetingComponent,
+  AdminEventAddComponent,
+  AddWebsiteComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA

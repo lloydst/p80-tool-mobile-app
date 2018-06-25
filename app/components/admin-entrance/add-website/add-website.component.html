@@ -1,0 +1,6 @@
+<StackLayout>
+    <TextField hint="client" [(ngModel)]='model.name' autocorrect="false" autocapitalizationType="none"></TextField>
+<TextField hint="url" [(ngModel)]='model.url' autocorrect="false" autocapitalizationType="none"></TextField>
+<button text="add" (tap)="addWebsite({name: model.name, url: model.url, visable: false})"></button>
+<label text="{{model.name}}, {{model.url}}"></label>
+</StackLayout>

@@ -1,0 +1,48 @@
+<ScrollView orientation="vertical">
+    <StackLayout>
+
+        <TextField hint="Identifier" [(ngModel)]="message.identifier" autocorrect="false" autocapitalizationType="none"></TextField>
+
+        <TextField hint="Message" [(ngModel)]="message.message" autocorrect="false" autocapitalizationType="none"></TextField>
+
+        <TextField hint="Image Link(url)" [(ngModel)]="message.imgLink" autocorrect="false" autocapitalizationType="none"></TextField>
+
+        <label text="Visable" row="0" col="0"></label>
+        <Switch class="m-15" checked="false" [(ngModel)]="message.img" isEnabled="true" checkedChange="onFirstChecked" col="1" row="0"></Switch>
+
+        <label text="time from:"></label>
+        <GridLayout rows="auto" columns="*,*,*,*,*">
+            <ListPicker col="0" row="0" [items]="year" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'fromYear')"
+                class="p-15"></ListPicker>
+            <ListPicker col="1" row="0" [items]="month" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'fromMonth')"
+                class="p-15"></ListPicker>
+            <ListPicker col="2" row="0" [items]="day" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event, 'fromDay')"
+                class="p-15"></ListPicker>
+            <ListPicker col="3" row="0" [items]="hour" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event, 'fromHour')"
+                class="p-15"></ListPicker>
+            <ListPicker col="4" row="0" [items]="min" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event, 'fromMin')"
+                class="p-15"></ListPicker>
+        </GridLayout>
+        <label text="time untill"></label>
+        <GridLayout rows="auto" columns="*,*,*,*,*">
+            <ListPicker col="0" row="0" [items]="year" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'tillYear')"
+                class="p-15"></ListPicker>
+            <ListPicker col="1" row="0" [items]="month" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'tillMonth')"
+                class="p-15"></ListPicker>
+            <ListPicker col="2" row="0" [items]="day" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'tillDay')"
+                class="p-15"></ListPicker>
+            <ListPicker col="3" row="0" [items]="hour" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'tillHour')"
+                class="p-15"></ListPicker>
+            <ListPicker col="4" row="0" [items]="min" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event,'tillMin')"
+                class="p-15"></ListPicker>
+        </GridLayout>
+        <button text="add!" (tap)="create({
+                identifier: message.identifier,
+                 img: message.img,
+                  imgLink:message.imgLink,
+                   message: message.message,
+                    showFrom:fromTime,
+                     showTill: tillTime
+                    })"></button>
+    </StackLayout>
+</ScrollView>

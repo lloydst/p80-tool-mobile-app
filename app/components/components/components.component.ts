@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view";
 import * as app from "application";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import { RouterExtensions } from 'nativescript-angular';
+import { RouterExtensions} from 'nativescript-angular';
 import {Router} from '@angular/router/router'
 
 @Component({

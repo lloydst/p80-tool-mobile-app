@@ -14,13 +14,7 @@ export class AdminEntranceComponent implements OnInit {
     private data: DataService) { }
   navigate(link) {
     // app logic here ...
-    this.routerExtensions.navigate([link], {
-        transition: {
-            name: "flip",
-            duration: 2000,
-            curve: "linear"
-        }
-    });
+    this.routerExtensions.navigate([link]);
     }
   ngOnInit() { 
       this.getWebsites()
@@ -34,7 +28,10 @@ export class AdminEntranceComponent implements OnInit {
   update(name) {
     console.log(name)
   }
-  delete(name) {
-    console.log(name)
+  delete(id) {
+    this.data.deleteWebsite(id).subscribe(()=>{
+        this.navigate('../components/entrance')
+    })
   }
+  
 }
