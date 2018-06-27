@@ -24,6 +24,8 @@
     "@angular/router": "~6.0.0",
     "nativescript-angular": "~6.0.0",
     "nativescript-theme-core": "~1.0.4",
+    "nativescript-ui-dataform": "^3.6.1",
+    "nativescript-ui-listview": "^3.5.8",
     "nativescript-ui-sidedrawer": "~4.1.0",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~6.1.0",
