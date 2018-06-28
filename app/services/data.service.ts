@@ -129,7 +129,7 @@ export class DataService {
   /**
    * deletes a single channel
    */
-  deleteChannel(channelobj) {
-    return this.http.delete(this.url +'/api/content/'+ channelobj.channel)
+  deleteChannel(channelstr) {
+    return this.http.delete(this.url +'/api/content/'+ channelstr)
   }
 }

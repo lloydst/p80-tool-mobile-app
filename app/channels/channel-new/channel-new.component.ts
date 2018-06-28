@@ -52,7 +52,7 @@ export class ChannelNewComponent implements OnInit {
 initPath() {
         // initialize our address
         return this.fb.group({
-            pathurl: [''],
+            pathurl: ['', Validators.required],
             description: [''],
             componentName:[''],
             delay:[2000]

@@ -1,5 +1,103 @@
-<StackLayout>
-  <Label textWrap="true"
-    text="{{channelData |json}}"></Label>
-    <!-- this needs to be dynamic from-->
-</StackLayout>
+<ScrollLayout [formGroup]="form">
+        <StackLayout class="form-group">
+            <label text="Channel name:"></label>
+            <TextField class="form-control" formControlName="channel" readonly="readonly"></TextField>
+        </StackLayout>
+        <StackLayout formArrayName="path">
+            <StackLayout *ngFor="let path of form.controls.path.controls; let i=index" >
+                <StackLayout class="panel-heading ">
+                    <label  class="h2 title" text="Path {{i + 1}}:"></label>
+                    <Button *ngIf="form.controls.path.controls.length > 1" (tap)="removePath(i)" text="Remove path V" width="auto">
+                    </Button>
+                </StackLayout>
+                <StackLayout [formGroupName]="i" class="border">
+    
+                    <StackLayout class="form-group">
+                        <label text="pathurl"></label>
+                        <TextField class="form-control" formControlName="pathurl" hint="/component/news"></TextField>
+                        <label *ngIf="!path.controls.pathurl.valid && path.controls.pathurl.invalid && path.controls.pathurl.touched" class="text-danger" text="pathurl is required"></label>
+                    </StackLayout>
+                    <StackLayout class="form-group">
+                        <label text="description"></label>
+                        <TextField class="form-control" formControlName="description"></TextField>
+                        <label *ngIf="!path.controls.description.valid && path.controls.description.invalid && path.controls.description.touched" class="text-danger" text="pathurl is required"></label>
+                    </StackLayout>
+                    <StackLayout class="form-group">
+                        <label text="component name"></label>
+                        <TextField class="form-control" formControlName="componentName"></TextField>
+                        <label *ngIf="!path.controls.componentName.valid && path.controls.componentName.invalid && path.controls.componentName.touched" class="text-danger" text="pathurl is required"></label>
+                    </StackLayout>
+                    <StackLayout class="form-group">
+                        <label text="delay"></label>
+                        <TextField class="form-control" keyboardType="number" formControlName="delay"></TextField>
+                        <label *ngIf="!path.controls.delay.valid && path.controls.delay.invalid && path.controls.delay.touched" class="text-danger" text="pathurl is required"></label>
+                    </StackLayout>
+                    <label [text]="form.valid"></label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <GridLayout columns="*,*,*">
+        
+            <Button (tap)="addPath()" col="0" width="auto" class="btn btn-succes" text="New Path +">
+            </Button>
+            <Button (tap)="save(form)" col="1" class="btn btn-primary" text="Submit" [disabled]="!form.valid"></Button>
+            <Button (tap)="delete(currentChannel)" col="2" class="btn btn-danger" text="delete" ></Button>
+        </GridLayout>
+    </ScrollLayout>
+    
+
+
+<!-- webversion
+    <form [formGroup]="form" (ngSubmit)="save(form)">
+    <div>
+        <label>Channel:
+          <input formControlName="channel" readonly="readonly">
+        </label>
+    </div>
+  
+    <div formArrayName="path">
+      <div *ngFor="let paths of path.controls; let i=index" [formGroupName]="i" >
+        <!-- The repeated path template 
+        <h4>path #{{i + 1}}</h4>
+        <div>
+          <div>
+            <label>Url: <br>
+              <input type="text" formControlName="pathurl">
+            </label>
+          </div>
+          <div >
+            <label>Name:<br>
+              <input type="text" formControlName="componentName">
+            </label>
+          </div>
+          <div >
+              <label>Description:<br>
+                <textarea formControlName="description" class="description"></textarea>
+              </label>
+          </div>
+          <div >
+                <label>Delay:<br>
+                  <input #delay type="number" formControlName="delay"> 
+                  {{delay.value / 1000 | number}} seconds
+                  {{delay.value / 1000 / 60 | number}} minutes
+                  {{delay.value /1000 / 60 / 60 | number}} hours
+                </label>
+          </div>
+        </div>
+        <br>
+        <button class="button succes" type="submit" (click)="addPath()"
+                  >Add path</button> &nbsp;
+          <button class="button danger" type="button danger" (click)="removePath(i)"
+                   >Remove path</button> <br>
+        <!-- End of the repeated address template 
+      </div>
+      <div>
+        <br>
+          <button class="button primary" type="submit"
+                  [disabled]="form.pristine">Save</button> &nbsp;
+          <button class="button danger" type="button danger" (click)="revert()"
+                  [disabled]="form.pristine" >undo/reload</button>
+        </div>
+    </div>
+  </form>
+-->

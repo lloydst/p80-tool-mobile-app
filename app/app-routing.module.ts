@@ -8,7 +8,7 @@ const routes: Routes = [
     { path: "algemeen", loadChildren: "./algemeen/algemeen.module#AlgemeenModule" },
     { path: "components", loadChildren: "./components/components.module#ComponentsModule" },
     { path: "channels", loadChildren: "./channels/channels.module#ChannelsModule" },
-    { path: "upload", loadChildren: "./upload/upload.module#UploadModule" }
+    { path: "upload", loadChildren: "./image/image.module#ImageModule" }
 ];
 
 @NgModule({

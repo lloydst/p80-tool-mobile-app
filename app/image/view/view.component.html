@@ -1,0 +1,11 @@
+<StackLayout>
+    <StackLayout *ngFor="let i of image" id="images" width="75%">
+
+        <label *ngIf="i.length > 0" text="location: '/images/img/{{i.filename}}'"></label>
+        <Image  src="https://p80-internship.herokuapp.com/images/img/{{i.filename}}" alt="image couldnt be loaded from db wich means the db is still online" srcset="" id="thumbn"></Image>
+            
+        <button text="delete" class="button warning" *ngIf="i.length > 0" (tap)="deleteImg(i.filename)"></button>
+       
+        <label text="no images currently in db" *ngIf="image.length < 1"></label>
+    </StackLayout>
+</StackLayout>

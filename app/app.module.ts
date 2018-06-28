@@ -10,6 +10,7 @@ import { DataService } from "~/services/data.service";
 import { IpService } from "~/services/ip.service";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
+import { FileService } from "~/services/file.service";
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     ],
     providers: [
         DataService,
-        IpService]
+        IpService,
+        FileService
+    ]
 })
 export class AppModule { }

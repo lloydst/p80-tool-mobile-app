@@ -17,9 +17,9 @@
 <ScrollView>
     <StackLayout ios:horizontalAlignment="center">
         <ListLayout>
-
             <button width="50%" *ngFor="let c of channels;" [text]="c.channel" (tap)="navigate('channels/'+c.channel)"></button>
         </ListLayout>
+        
         <router-outlet></router-outlet>
 
     </StackLayout>

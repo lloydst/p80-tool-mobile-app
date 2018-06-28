@@ -1,9 +1,10 @@
-import { Component, OnInit,Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view";
 import * as app from "application";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { RouterExtensions } from 'nativescript-angular';
 import { DataService } from '~/services/data.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { DataService } from '~/services/data.service';
     styleUrls: ['./channels.component.scss']
 })
 export class ChannelsComponent implements OnInit {
+    
     channels
     public titleAndIcon: any = { title: "Icon", iconSource: "res://icon" };
 
@@ -21,10 +23,22 @@ export class ChannelsComponent implements OnInit {
         let tabView = <TabView>args.object;
         console.log("Selected index changed! New index: " + tabView.selectedIndex);
     }
+   
 
-
-    ngOnInit() { 
+    ngOnInit() {
+        
         this.getChannels()
+        this._router.routeReuseStrategy.shouldReuseRoute = function(){
+            return false;
+        };
+        
+        this._router.events.subscribe((evt) => {
+            if (evt instanceof NavigationEnd) {
+                this._router.navigated = false;
+                
+            }
+        });
+        
     }
 
     onDrawerButtonTap(): void {
@@ -34,25 +48,29 @@ export class ChannelsComponent implements OnInit {
 
     constructor(
         private routerExtensions: RouterExtensions,
-        private data: DataService
+        private data: DataService,
+        private _router: Router
     ) { }
 
     onNavItemTap(navItemRoute: string): void {
         this.routerExtensions.navigate([navItemRoute], {
-            transition: {
-                name: "fade"
-            }
+            //transition: {
+            //    name: "fade"
+            //}
         });
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }
     getChannels() {
-        this.data.getChannelContent().subscribe(channelList =>{
-            this.channels =channelList
+        
+        this.data.getChannelContent().subscribe(channelList => {
+            this.channels = channelList
+            
         })
     }
     navigate(link) {
         // app logic here ...
         this.routerExtensions.navigate([link]);
-        }
+    }
+
 }
